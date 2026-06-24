@@ -1,54 +1,185 @@
 # Uptime Monitoring Service
 
-A production-grade Uptime Monitoring Service to monitor websites/APIs, track uptime and latency, store historical data, and trigger alerts when failures occur.
+A full-stack uptime monitoring platform that continuously checks website availability, tracks response times, stores historical monitoring data, and provides a modern web dashboard for real-time monitoring.
+
+## Preview
+
+![Dashboard Preview](assets/dashboard-preview.png)
+
+---
 
 ## Features
-- Add URLs with customizable polling frequency (as low as 10s)
-- Support for GET and HEAD requests via asynchronous monitoring engine
-- High scalability with `aiohttp` for max concurrency and `APScheduler`
-- Measures Time to First Byte (TTFB) and Response Time
-- Schedulers run independently in an asyncio background loop
-- SQLite database backing via SQLAlchemy
-- Modern responsive dashboard using Flask and Chart.js
-- Configurable Email/Webhook alerts with cooldown protections
 
-## Requirements
-- Python 3.9+
-- See `requirements.txt`
+### Monitoring
+- Monitor websites and API endpoints
+- Configurable monitoring intervals
+- Automatic uptime checks
+- Response time tracking
+- HTTP status monitoring
 
-## Setup Instructions
+### Dashboard
+- Real-time monitoring dashboard
+- Uptime percentage tracking
+- Downtime incident reporting
+- Average response time analytics
+- Historical monitoring data
 
-1. **Create and Activate Virtual Environment** (Optional but recommended):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   # or on Windows: venv\Scripts\activate
-   ```
+### Monitoring Engine
+- Asynchronous monitoring using `aiohttp`
+- Background scheduling with `APScheduler`
+- Concurrent endpoint checks
+- Automatic status updates
 
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Data Storage
+- SQLite database
+- Monitor configuration storage
+- Historical uptime records
+- Performance metrics tracking
 
-3. **Run the application:**
-   ```bash
-   python app.py
-   ```
+### Alerts
+- Downtime detection
+- Alert cooldown system
+- Extensible notification architecture
 
-4. **Access the dashboard:**
-   Open your browser and navigate to `http://localhost:5000`
+---
 
-## Alert Configuration
-Alerts uses SMTP or Webhooks. To send emails, configure the Environment variables before starting `app.py`:
-- `SMTP_SERVER`
-- `SMTP_PORT`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `SMTP_FROM`
+## Preview Screenshot
 
-## Architecture Overview
-- **app.py**: Flask web application exposing REST API and serving the dashboard UI.
-- **scheduler.py**: APScheduler instance executing monitors periodically in a non-blocking background thread.
-- **monitor.py**: Asynchronous fetch functions handling redirects, timeouts, and metrics collection.
-- **database.py / models.py**: Clean ORM layer for tracking configuration and log telemetry.
-- **alerts.py**: Alert delivery manager integrating SMTP/Webhooks logic with spam prevention.
+![Dashboard](assets/dashboard-preview.png)
+
+---
+
+## Tech Stack
+
+### Backend
+- Python
+- Flask
+- APScheduler
+- aiohttp
+- SQLite
+
+### Frontend
+- HTML
+- CSS
+- JavaScript
+
+---
+
+## Project Structure
+
+```text
+uptime-monitoring-service/
+│
+├── assets/
+│   └── dashboard-preview.png
+│
+├── static/
+├── templates/
+│
+├── app.py
+├── monitor.py
+├── scheduler.py
+├── alerts.py
+├── database.py
+├── models.py
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/securematrix/uptime-monitoring-service.git
+cd uptime-monitoring-service
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### Linux/macOS
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Running the Application
+
+Start the server:
+
+```bash
+python app.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:5000
+```
+
+---
+
+## Example Monitors
+
+```text
+https://google.com
+https://github.com
+https://openai.com
+https://securematrix.github.io/personal-portfolio/
+```
+
+---
+
+## Future Improvements
+
+- Email notifications
+- Webhook alerts
+- SMS alerts
+- User authentication
+- PostgreSQL support
+- Docker deployment
+- Public status pages
+- SSL certificate monitoring
+- Multi-user support
+
+---
+
+## Learning Outcomes
+
+This project demonstrates:
+
+- Full-stack web development
+- Asynchronous programming
+- Task scheduling
+- Database design
+- Monitoring systems architecture
+- Dashboard development
+- Performance tracking and analytics
+
+---
+
+## License
+
+MIT License
